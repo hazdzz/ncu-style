@@ -62,10 +62,13 @@
 % Section and caption format %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \RequirePackage{titlesec}
-\titleformat*{\paragraph}{\itshape}
-\titleformat*{\section}{\Large\sffamily\bfseries}
-\titleformat*{\subsection}{\large\sffamily\bfseries}
-\titleformat*{\subsubsection}{\normalsize\sffamily\bfseries}
+% Heading text uses IBM Plex Sans (\sffamily\bfseries), while the heading
+% math mode uses the IBM Plex Serif "plexserif" math version.
+\titleformat*{\paragraph}{\mathversion{plexserif}\itshape}
+\titleformat*{\section}{\mathversion{plexserif}\Large\sffamily\bfseries}
+\titleformat*{\subsection}{\mathversion{plexserif}\large\sffamily\bfseries}
+\titleformat*{\subsubsection}{\mathversion{plexserif}\normalsize\sffamily\bfseries}
+% Make \textbf always use IBM Plex Sans bold (used, for example, in captions).
 \DeclareTextFontCommand{\textbf}{\bfseries\sffamily}
 
 \newcommand{\subsubsubsection}[1]{\paragraph{#1}\mbox{}\\}
@@ -79,11 +82,31 @@
 \captionsetup[sub]{singlelinecheck=true,format=custom,labelsep=custom,font=small}
 
 % Fonts %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+% Body text uses Latin Modern (lmodern); IBM Plex Sans is the sans family
+% used by titles and headings; IBM Plex Mono is the monospace family used by
+% code and URLs.
 \RequirePackage[T1]{fontenc}
 \RequirePackage{lmodern}
 \RequirePackage[scale=0.92, semibold]{plex-sans}
 \RequirePackage[scale=0.92]{plex-mono}
+
+% Load IBM Plex Serif only to obtain its NFSS family for the math version.
+% plex-serif sets \rmdefault to the IBM Plex Serif family, so we save the
+% current body roman default first, capture the IBM Plex Serif family, and
+% then restore the body roman font (Latin Modern) afterwards.
+\let\ncubodyrmdefault\rmdefault
+\RequirePackage[scale=0.92]{plex-serif}
+\edef\ncuplexseriffamily{\rmdefault}
+\let\rmdefault\ncubodyrmdefault
+
+% Math version for the title and the headings: IBM Plex Serif %%%%%%%%%%%%%%%%%
+% This math version is activated only inside the title and the section
+% headings, so the body math keeps the default Latin Modern fonts.
+\DeclareMathVersion{plexserif}
+% Variable letters a-z and A-Z use the IBM Plex Serif italic shape.
+\SetSymbolFont{letters}{plexserif}{T1}{\ncuplexseriffamily}{\bfdefault}{it}
+% Digits and upright operators use the IBM Plex Serif upright shape.
+\SetSymbolFont{operators}{plexserif}{T1}{\ncuplexseriffamily}{\bfdefault}{n}
 
 % Authors, affiliations, infos %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -123,7 +146,9 @@
 \newcommand\preprintformat[2][]{{\small\sffamily\bfseries #2}}
 \newcommand\preprint[1]{\addtolist{#1}{\ncudatalist}{\preprintformat}{\par}}
 
-\renewcommand{\title}[1]{\newcommand{\titlelist}{{\huge\sffamily\bfseries #1}}}
+% Title text uses IBM Plex Sans (\sffamily\bfseries), while the title math
+% mode uses the IBM Plex Serif "plexserif" math version.
+\renewcommand{\title}[1]{\newcommand{\titlelist}{{\mathversion{plexserif}\huge\sffamily\bfseries #1}}}
 
 \newcommand{\beginappendix}{\appendix{\huge\sffamily\bfseries Appendix\par}}
 
