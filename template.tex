@@ -62,11 +62,6 @@
 \setlength{\abovecaptionskip}{1pt}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Paragraph heading
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\renewcommand{\paragraph}[1]{\vspace{1.25mm}\noindent\textbf{#1}}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Theorems
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \theoremstyle{plain}
@@ -83,19 +78,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Code listing style
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\definecolor{codeblue}{rgb}{0.25, 0.5, 0.5}
-\definecolor{codekw}{rgb}{0.35, 0.35, 0.75}
-\lstdefinestyle{Pytorch}{
-    language        = Python,
-    backgroundcolor = \color{white},
-    basicstyle      = \fontsize{9pt}{8pt}\selectfont\ttfamily\bfseries,
-    columns         = fullflexible,
-    aboveskip       = 1pt,
-    belowskip       = 1pt,
-    breaklines      = true,
-    captionpos      = b,
-    commentstyle    = \color{codeblue},
-    keywordstyle    = \color{codekw},
+\usepackage{minted}
+\usepackage{newfloat}
+\usepackage{xcolor}
+\DeclareFloatingEnvironment[name=Code, placement=tbp, fileext=lol]{codeblock}
+\renewcommand{\theFancyVerbLine}{%
+    \ttfamily\textcolor[RGB]{128, 128, 128}{\scriptsize\arabic{FancyVerbLine}}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

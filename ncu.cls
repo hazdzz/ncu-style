@@ -53,7 +53,8 @@
   colorlinks,
   linkcolor=ncublue,
   citecolor=ncublue,
-  urlcolor=ncublue
+  urlcolor=ncublue,
+  bookmarksdepth=3
 }
 
 \RequirePackage[round,authoryear]{natbib}
@@ -64,7 +65,8 @@
 \RequirePackage{titlesec}
 % Heading text uses IBM Plex Sans (\sffamily\bfseries), while the heading
 % math mode uses the IBM Plex Serif "plexserif" math version.
-\titleformat*{\paragraph}{\mathversion{plexserif}\itshape}
+\titleformat{\paragraph}[runin]{\normalfont\bfseries\sffamily}{}{0pt}{}
+\titlespacing*{\paragraph}{0pt}{1.25mm}{1em}
 \titleformat*{\section}{\mathversion{plexserif}\Large\sffamily\bfseries}
 \titleformat*{\subsection}{\mathversion{plexserif}\large\sffamily\bfseries}
 \titleformat*{\subsubsection}{\mathversion{plexserif}\normalsize\sffamily\bfseries}
