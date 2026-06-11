@@ -71,7 +71,8 @@
 \titleformat*{\subsection}{\mathversion{plexserif}\large\sffamily\bfseries}
 \titleformat*{\subsubsection}{\mathversion{plexserif}\normalsize\sffamily\bfseries}
 % Make \textbf always use IBM Plex Sans bold (used, for example, in captions).
-\DeclareTextFontCommand{\textbf}{\bfseries\sffamily}
+% \DeclareTextFontCommand{\textbf}{\bfseries\sffamily}
+\DeclareTextFontCommand{\textbf}{\bfseries\sffamily\mathversion{plexserif}}
 
 \newcommand{\subsubsubsection}[1]{\paragraph{#1}\mbox{}\\}
 \setcounter{secnumdepth}{4}
@@ -109,6 +110,12 @@
 \SetSymbolFont{letters}{plexserif}{T1}{\ncuplexseriffamily}{\bfdefault}{it}
 % Digits and upright operators use the IBM Plex Serif upright shape.
 \SetSymbolFont{operators}{plexserif}{T1}{\ncuplexseriffamily}{\bfdefault}{n}
+
+\SetMathAlphabet{\mathbf}{plexserif}{T1}{\ncuplexseriffamily}{\bfdefault}{n}
+\SetMathAlphabet{\mathrm}{plexserif}{T1}{\ncuplexseriffamily}{\mddefault}{n}
+\SetMathAlphabet{\mathit}{plexserif}{T1}{\ncuplexseriffamily}{\mddefault}{it}
+\SetMathAlphabet{\mathsf}{plexserif}{T1}{\sfdefault}{\mddefault}{n}
+\SetMathAlphabet{\mathtt}{plexserif}{T1}{\ttdefault}{\mddefault}{n}
 
 % Authors, affiliations, infos %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
