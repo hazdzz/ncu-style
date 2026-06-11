@@ -71,8 +71,8 @@
 \titleformat*{\subsection}{\mathversion{plexserif}\large\sffamily\bfseries}
 \titleformat*{\subsubsection}{\mathversion{plexserif}\normalsize\sffamily\bfseries}
 % Make \textbf always use IBM Plex Sans bold (used, for example, in captions).
-% \DeclareTextFontCommand{\textbf}{\bfseries\sffamily}
-\DeclareTextFontCommand{\textbf}{\bfseries\sffamily\mathversion{plexserif}}
+\DeclareTextFontCommand{\textbf}{\bfseries\sffamily}
+\DeclareTextFontCommand{\textbfps}{\bfseries\sffamily\mathversion{plexserif}}
 
 \newcommand{\subsubsubsection}[1]{\paragraph{#1}\mbox{}\\}
 \setcounter{secnumdepth}{4}
@@ -91,6 +91,7 @@
 \RequirePackage[T1]{fontenc}
 \RequirePackage{lmodern}
 \RequirePackage[scale=0.92, semibold]{plex-sans}
+\renewcommand{\bfdefault}{bx}
 \RequirePackage[scale=0.92]{plex-mono}
 
 % Load IBM Plex Serif only to obtain its NFSS family for the math version.
