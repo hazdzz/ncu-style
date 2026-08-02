@@ -78,12 +78,33 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Code listing style
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{minted}
 \usepackage{newfloat}
 \usepackage{xcolor}
+\usepackage{upquote}
 \DeclareFloatingEnvironment[name=Code, placement=tbp, fileext=lol]{codeblock}
-\renewcommand{\theFancyVerbLine}{%
-    \ttfamily\textcolor[RGB]{128, 128, 128}{\scriptsize\arabic{FancyVerbLine}}
+
+\definecolor{pygkeyword}{HTML}{007020}
+\definecolor{pygstring}{HTML}{4070A0}
+\definecolor{pygcomment}{HTML}{60A0B0}
+\definecolor{pygname}{HTML}{06287E}
+\definecolor{pyglineno}{RGB}{128,128,128}
+
+\lstdefinestyle{pycode}{
+    language=Python,
+    basicstyle=\ttfamily\scriptsize,
+    keywordstyle=\color{pygkeyword}\bfseries,
+    stringstyle=\color{pygstring},
+    commentstyle=\color{pygcomment}\itshape,
+    emph={torch,math,F,self}, emphstyle=\color{pygname},
+    numbers=left,
+    numberstyle=\ttfamily\scriptsize\color{pyglineno},
+    numbersep=4pt,
+    xleftmargin=10pt,
+    breaklines=true, breakatwhitespace=false,
+    postbreak=\mbox{\textcolor{pyglineno}{$\hookrightarrow$}\space},
+    showstringspaces=false, upquote=true,
+    columns=fullflexible, keepspaces=true,
+    tabsize=4,
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
