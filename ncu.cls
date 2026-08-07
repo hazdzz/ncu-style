@@ -63,13 +63,18 @@
 % Section and caption format %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \RequirePackage{titlesec}
-% Heading text uses IBM Plex Sans (\sffamily\bfseries), while the heading
+% ncu: The title and the headings use the semibold weight of IBM Plex Sans.
+% The series is requested explicitly, so \bfdefault (used by the body text and
+% by \textbf) is left untouched. Change "sb" to "bx" to go back to true bold.
+\newcommand*{\ncuheadseries}{sb}
+\newcommand{\ncuheadbf}{\sffamily\fontseries{\ncuheadseries}\selectfont}
+% Heading text uses IBM Plex Sans (\sffamily, semibold), while the heading
 % math mode uses the IBM Plex Serif "plexserif" math version.
-\titleformat{\paragraph}[runin]{\normalfont\bfseries\sffamily}{}{0pt}{}
+\titleformat{\paragraph}[runin]{\normalfont\ncuheadbf}{}{0pt}{}
 \titlespacing*{\paragraph}{0pt}{1.25mm}{1em}
-\titleformat*{\section}{\mathversion{plexserif}\Large\sffamily\bfseries}
-\titleformat*{\subsection}{\mathversion{plexserif}\large\sffamily\bfseries}
-\titleformat*{\subsubsection}{\mathversion{plexserif}\normalsize\sffamily\bfseries}
+\titleformat*{\section}{\mathversion{plexserif}\Large\ncuheadbf}
+\titleformat*{\subsection}{\mathversion{plexserif}\large\ncuheadbf}
+\titleformat*{\subsubsection}{\mathversion{plexserif}\normalsize\ncuheadbf}
 % Make \textbf always use IBM Plex Sans bold (used, for example, in captions).
 \DeclareTextFontCommand{\textbf}{\bfseries\sffamily}
 \DeclareTextFontCommand{\textbfps}{\bfseries\sffamily\mathversion{plexserif}}
@@ -106,13 +111,15 @@
 % Math version for the title and the headings: IBM Plex Serif %%%%%%%%%%%%%%%%%
 % This math version is activated only inside the title and the section
 % headings, so the body math keeps the default Latin Modern fonts.
+% ncu: its weight follows \ncuheadseries, so the heading math matches the
+% semibold heading text. Replace \ncuheadseries by \bfdefault to get bold.
 \DeclareMathVersion{plexserif}
 % Variable letters a-z and A-Z use the IBM Plex Serif italic shape.
-\SetSymbolFont{letters}{plexserif}{T1}{\ncuplexseriffamily}{\bfdefault}{it}
+\SetSymbolFont{letters}{plexserif}{T1}{\ncuplexseriffamily}{\ncuheadseries}{it}
 % Digits and upright operators use the IBM Plex Serif upright shape.
-\SetSymbolFont{operators}{plexserif}{T1}{\ncuplexseriffamily}{\bfdefault}{n}
+\SetSymbolFont{operators}{plexserif}{T1}{\ncuplexseriffamily}{\ncuheadseries}{n}
 
-\SetMathAlphabet{\mathbf}{plexserif}{T1}{\ncuplexseriffamily}{\bfdefault}{n}
+\SetMathAlphabet{\mathbf}{plexserif}{T1}{\ncuplexseriffamily}{\ncuheadseries}{n}
 \SetMathAlphabet{\mathrm}{plexserif}{T1}{\ncuplexseriffamily}{\mddefault}{n}
 \SetMathAlphabet{\mathit}{plexserif}{T1}{\ncuplexseriffamily}{\mddefault}{it}
 \SetMathAlphabet{\mathsf}{plexserif}{T1}{\sfdefault}{\mddefault}{n}
@@ -156,11 +163,11 @@
 \newcommand\preprintformat[2][]{{\small\sffamily\bfseries #2}}
 \newcommand\preprint[1]{\addtolist{#1}{\ncudatalist}{\preprintformat}{\par}}
 
-% Title text uses IBM Plex Sans (\sffamily\bfseries), while the title math
+% Title text uses IBM Plex Sans (\sffamily, semibold), while the title math
 % mode uses the IBM Plex Serif "plexserif" math version.
-\renewcommand{\title}[1]{\newcommand{\titlelist}{{\mathversion{plexserif}\huge\sffamily\bfseries #1}}}
+\renewcommand{\title}[1]{\newcommand{\titlelist}{{\mathversion{plexserif}\huge\ncuheadbf #1}}}
 
-\newcommand{\beginappendix}{\appendix{\huge\sffamily\bfseries Appendix\par}}
+\newcommand{\beginappendix}{\appendix{\huge\ncuheadbf Appendix\par}}
 
 % Titlebox %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
